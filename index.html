@@ -50,16 +50,24 @@
         }
 
         img {
+            max-width: 100%;
+            max-height: 100%;
+            z-index: 3;
+
             user-select: none;
             animation: rotate 630s infinite linear alternate;
         }
 
-        h1 {
+        h1, a {
             text-align: center;
+            margin: 0;
+            z-index: 3;
         }
 
         a {
-            z-index: 1;
+            background-color: white;
+            padding: 0.1em 0.2em;
+            border-radius: 4px;
         }
 
         @keyframes rotate {
@@ -73,6 +81,96 @@
                 transform: scale(200%);
             }
         }
+
+        img.winton-spawn {
+            position: absolute;
+            animation: forwards linear;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        img.winton-spawn.golden {
+            filter: sepia(1) saturate(3) hue-rotate(15deg) brightness(1.1) contrast(1.1);
+            z-index: 2;
+        }
+
+        @keyframes spawn-fly {
+            from {
+                bottom: -256px;
+                rotate: 0deg;
+            }
+
+            to {
+                bottom: 100%;
+                rotate: 360deg;
+            }
+        }
+
+        @keyframes spawn-fly-counter {
+            from {
+                bottom: -128px;
+                rotate: 360deg;
+            }
+
+            to {
+                bottom: 100%;
+                rotate: 0deg;
+            }
+        }
     </style>
+
+    <script defer>
+        function randomInt(min, max) {
+            return min + Math.floor(Math.random() * (max - min));
+        }
+
+        function spawnWinton() {
+            const img = document.createElement('img');
+            img.className = 'winton-spawn';
+            img.src = "winton.png";
+            img.alt = 'winton overwatch (again)';
+
+            img.style.animationName = Math.random() < 0.5
+                ? 'spawn-fly'
+                : 'spawn-fly-counter'
+
+            let size;
+
+            if (Math.random() < 0.001) {
+                img.classList.add('golden');
+                size = 128;
+            } else {
+                size = randomInt(32, 128);
+            }
+
+            img.style.width = size + 'px';
+            img.style.height = size + 'px';
+
+
+            img.style.left = randomInt(0, window.innerWidth - size) + 'px';
+
+            const speed = randomInt(10, 30);
+
+            img.style.animationDuration = `${speed}s`;
+
+            document.body.appendChild(img);
+
+            setTimeout(() => img.remove(), speed * 1000);
+        }
+
+        function scheduleNextWinton(secondsTill) {
+            setTimeout(() => {
+                spawnWinton();
+
+                if (secondsTill <= 0.25) {
+                    setInterval(spawnWinton, 250);
+                } else {
+                    scheduleNextWinton(secondsTill * 0.95);
+                }
+            }, secondsTill * 1000)
+        }
+
+        scheduleNextWinton(5);
+    </script>
 </body>
 </html>
