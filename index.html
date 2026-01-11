@@ -18,7 +18,7 @@
     <meta property="og:description" content="Winton Overwatch">
     <meta property="og:image" content="https://wintonoverwatch.com/winton.png">
 
-    <!-- Twitter -->
+    <!-- X: The Everything App (Blaze Your Glory) -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://wintonoverwatch.com/">
     <meta property="twitter:title" content="Winton Overwatch">
@@ -28,11 +28,26 @@
 <body>
     <h1>Winton Overwatch</h1>
 
-    <img src="winton.png" alt="winton overwatch">
+    <img src="winton.webp" alt="winton overwatch">
 
     <a href="https://cfloppa.com" rel="noopener noreferrer">cfloppa.com</a>
 
     <style>
+        :root {
+            color-scheme: light dark;
+        }
+        @-moz-document unobservable-document() {
+            :root {
+                color-scheme: light dark;
+            }
+        }
+        @media (prefers-color-scheme: light) {
+          a { background-color: white; }
+        }
+        @media (prefers-color-scheme: dark) {
+          a { background-color: Canvas; }
+        }
+
         html, body {
             margin: 0;
             padding: 0;
@@ -50,8 +65,8 @@
         }
 
         img {
-            max-width: 100%;
-            max-height: 100%;
+            max-width: 90%;
+            max-height: 90%;
             z-index: 3;
 
             user-select: none;
@@ -65,7 +80,6 @@
         }
 
         a {
-            background-color: white;
             padding: 0.1em 0.2em;
             border-radius: 4px;
         }
@@ -119,7 +133,7 @@
         }
     </style>
 
-    <script defer>
+    <script>
         function randomInt(min, max) {
             return min + Math.floor(Math.random() * (max - min));
         }
@@ -129,6 +143,7 @@
             img.className = 'winton-spawn';
             img.src = "winton.png";
             img.alt = 'winton overwatch (again)';
+            img.setAttribute('aria-hidden', 'true');
 
             img.style.animationName = Math.random() < 0.5
                 ? 'spawn-fly'
