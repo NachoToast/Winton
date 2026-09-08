@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Performance</title>
+        <link rel="icon" href="favicon.ico">
+        <link rel="stylesheet" href="performance.css">
+        <script defer src="performance.js"></script>
+    </head>
+    <body>
+        <section>
+            <h1>Performance</h1>
+    
+            <h3>Introduction</h3>
+    
+            <p><i>You paid for your computer, so you might as well use all of it.</i></p>
+    
+            <p>Jokes aside, my ethos is that everyone gets to have a similar-ish experience, so we don't end up in situations like <a href="https://youtube.com/shorts/ZKIc5DnGmSk" target="_blank">this</a>.<br /><br />To help achieve this, I've done some basic performance testing to help you (yes <i>you</i> dear reader) reach a decent experience with minimal trade-off.</p>
+    
+            <h3>Frame Times & You - A Treatise</h3>
+    
+            <p>Now obviously I can't plan for every permutation of CPU, GPU, monitors, and other things that influence how well your game runs. What I can do however is test different things on my own computer with the belief that they'll have a similar impact on your own.<br /><br />To help improve the accuracy and usefulness of these readings, I am not using FPS as a metric for performance, instead I am using <b>frame times</b>.</p>
+    
+            <p>Frame times are the opposite of FPS, you can think of it as SPF (no, not the sunscreen SPF). For instance, in order to reach 60FPS you need a frame time of at most 16ms.</p>
+    
+            <p>The first thing you should do is calculate your ideal frame time, i.e. what FPS do you want your game to run at?</p>
+    
+            <table>
+                <thead>
+                    <tr>
+                        <th>FPS</th>
+                        <th>Frame Time (ms)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td align="right">30</td>
+                        <td align="right">33</td>
+                    </tr>
+                    <tr>
+                        <td align="right">60</td>
+                        <td align="right">16</td>
+                    </tr>
+                    <tr>
+                        <td align="right">75</td>
+                        <td align="right">13</td>
+                    </tr>
+                    <tr>
+                        <td align="right">120</td>
+                        <td align="right">8</td>
+                    </tr>
+                    <tr>
+                        <td align="right">144</td>
+                        <td align="right">6</td>
+                    </tr>
+                    <tr>
+                        <td align="right">150</td>
+                        <td align="right">6</td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <p class="aside">Or calculate your own, frame time = 1000 / your desired framerate.</p>
+    
+            <p>Think of this frame time as your performance budget, better shaders will use up more frame time, and you need to keep it under the desired number to maintain the desired FPS.</p>
+    
+            <h3>The Presets</h3>
+    
+            <p>Below is a series of images you can flick through to look at the different "levels" of shaders (and Distant Horizons), next to each one is a description of the main differences and the "cost" of the preset on your frame time.<br /><br /><b>Keep in mind</b>: These frame time numbers are how <i>my</i> computer was impacted, if you have a better graphics card than me the impact might be smaller, and vice-versa if you have a worse graphics card.</p>
+
+            <p class="aside">You can also use the arrow keys to swap images below.</p>
+        </section>
+    
+
+        <img id="img" src="performance/0_base.png" />
+
+        <div class="main-row">
+            <button id="previous">Previous</button>
+            <button id="next">Next</button>
+            <h4 id="title">Title</h4>
+            <div>
+                <p class="frame-time-info">Frame Time: <b id="frame-time">0</b>ms (<span>~<span id="calc-fps">1 Morbillion</span> FPS</span>)</p>
+                <p>Distant Horizons Quality Preset: <b id="dh">Unknown</b></p>
+                <p>Shader Performance Preset: <b id="sh">Unknown</b></p>
+            </div>
+        </div>
+
+        <section id="description">
+            Description wow.
+        </section>
+
+        <section>
+            <h3>The Recommended Way</h3>
+
+            <p>My <b>general recommendation</b> is to have Distant Horizons on "Medium", and shaders on whatever your default preset is (it'll say "(Default)" after it when you click through them).</p>
+
+            <p>When it comes to squeezing out more performance, you first should decide whether you want to sacrifice visuals (i.e. downgrade/remove shaders) or render distance (i.e. downgrade/remove Distant Horizons).</p>
+
+            <p>If downgrading <b>Distant Horizons</b>, you don't have a lot of options unfortunately. The <b>Low</b> quality preset might give you a marginal FPS increase, but the <b>Minimum</b> quality one looks worse than simply disabling Distant Horizons in my opinion.</p>
+
+            <p class="aside">You can also disable Distant Horizons without having to restart your game, just change <b>Enable Rendering</b> to <b>False</b>.</p>
+
+            <p>If downgrading <b>shaders</b>, the best improvements are tied to the performance presets, so diving into nested options menus isn't really worth it.</p>
+        </section>
+
+        <section>
+            <h3>What about CPU?</h3>
+
+            <p>Ok nerd, first of all don't test CPU in a singleplayer world, since you're gonna be playing on multiplayer where your CPU won't have as much to do (since the server will be doing a lot of the heavy lifting for you).<br /><br />Second of all the only thing you can do to help your CPU is reducing simulation distance and lowering the Distant Horizons CPU preset (if enabled).</p>
+        </section>
+
+        <section>
+            <h3>Further Help</h3>
+
+            <p>Don't be afraid to ask for help on the Discord, I'd be more than happy to help tailor your settings to <i>you</i> specifically :)</p>
+        </section>
+    </body>
+</html>

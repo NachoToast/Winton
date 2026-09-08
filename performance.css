@@ -1,0 +1,98 @@
+:root {
+    color-scheme: light dark;
+}
+
+@-moz-document unobservable-document() {
+    :root {
+        color-scheme: light dark;
+    }
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    border: none;
+
+    height: 100svh;
+    width: 100svw;
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+}
+
+section {
+    width: min(80%, 800px);
+    align-items: start;
+    justify-content: start;
+}
+
+table {
+    border: solid 1px gray;
+    margin: 0 0.5em;
+    padding: 0.25em;
+    border-collapse: collapse;
+
+    th, td {
+        border: solid 1px gray;
+        padding: 0.2em;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(128, 128, 128, 0.237);
+    }
+}
+
+p.aside {
+    color: rgb(155, 155, 155);
+}
+
+img {
+    margin-left: 2em;
+    width: calc(100% - 4em);
+    box-shadow: 0 0 10px 1px black;
+}
+
+.main-row {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    width: 100%;
+    padding: 0 1.2em 0 4em;
+    box-sizing: border-box;
+    gap: 0.5em;
+
+    > button {
+        font-size: large;
+        padding: 0.1em 0.5em;
+        cursor: pointer;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+    }
+
+    > div {
+        white-space: nowrap;
+        justify-self: flex-end;
+        flex-grow: 1;
+        text-align: right;
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 0.1em;
+        padding: 0.1em;
+
+        > p {
+            margin: 0;
+            padding: 0;
+        }
+    }
+}
+
+#description {
+    padding-bottom: 1em;
+    border-bottom: dashed 1px gray;
+}
