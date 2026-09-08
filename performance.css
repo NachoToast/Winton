@@ -52,15 +52,15 @@ p.aside {
 
 img {
     margin-left: 2em;
-    width: calc(100% - 4em);
+    width: min(calc(100% - 4em), 60vw);
     box-shadow: 0 0 10px 1px black;
 }
 
 .main-row {
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     align-items: center;
-    width: 100%;
+    width: 60vw;
     padding: 0 1.2em 0 4em;
     box-sizing: border-box;
     gap: 0.5em;
